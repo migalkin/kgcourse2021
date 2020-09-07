@@ -61,10 +61,10 @@ Graph Representation Learning (GRL) - одна из самых быстро ра
 |       #        | Title |  Materials  |
 | ------------- | ------------- | ------------- |
 | 1   | Introduction  | coming soon |
-| 2   | RDF & RDFS  | coming soon  |
-| 3   | Description Logics & OWL | coming soon |
-| 4   | SPARQL & Graph Databases | coming soon |
-| 5   | Data Integration | coming soon |
+| 2   | RDF & RDFS & OWL  | coming soon  |
+| 3   | SPARQL & Graph Databases | coming soon |
+| 4   | Reification & SHACL & ShEx | coming soon |
+| 5   | Semantic Data Integration | coming soon |
 | 6   | Knowledge Graph Embeddings | coming soon |
 | 7   | Graph Theory Intro | coming soon |
 | 8   | Graph Neural Networks & KGs | coming soon |
