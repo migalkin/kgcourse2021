@@ -82,6 +82,11 @@ footer:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/migalkin/kgcourse2020"
 
+collections:
+  lectures:
+    output: true
+    permalink: /:collection/:path/
+
 defaults:
   # _posts
   - scope:
@@ -89,11 +94,8 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: true
-      comments: true
-      share: true
-      related: true
   # _pages
   - scope:
       path: "_pages"
@@ -101,6 +103,13 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # _lectures
+  - scope:
+      path: ""
+      type: lectures
+    values:
+      layout: single
+      author_profile: false
 
 category_archive:
   type: liquid
