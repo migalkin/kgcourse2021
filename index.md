@@ -84,13 +84,13 @@ Graph Representation Learning (GRL) - одна из самых быстро ра
 
 <!-- {% include gallery id="gallery_team" layout="third" %} -->
 
-![](/assets/images/mg.png){: height="100px" width="100px" style="float:left; padding-right:10px"}Михаил Галкин <br/> TU Dresden & Fraunhofer IAIS
+![](/assets/images/mg.png){: height="100px" width="100px" style="float:left; padding-right:10px"}**Михаил Галкин** <br/> TU Dresden & Fraunhofer IAIS
 
-![](/assets/images/vs.jpeg){: height="100px" width="100px" style="float:left; padding-right:10px"}Вадим Сафронов <br/> Key Points
+![](/assets/images/vs.jpeg){: height="100px" width="100px" style="float:left; padding-right:10px"}**Вадим Сафронов** <br/> Key Points
 
-![](/assets/images/si.jpg){: height="100px" width="100px" style="float:left; padding-right:10px"}Сергей Иванов <br/> Criteo
+![](/assets/images/si.jpg){: height="100px" width="100px" style="float:left; padding-right:10px"}**Сергей Иванов** <br/> Criteo
 
-![](/assets/images/dm.jpg){: height="100px" width="100px" style="float:left; padding-right:10px"}Дмитрий Муромцев <br/> Университет ИТМО
+![](/assets/images/dm.jpg){: height="100px" width="100px" style="float:left; padding-right:10px"}**Дмитрий Муромцев** <br/> Университет ИТМО
 
 
 <!-- {% include feature_row %} -->
