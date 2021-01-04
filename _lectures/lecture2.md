@@ -192,13 +192,13 @@ Class: Musician
 ```turtle
 :Musician rdf:type owl:Class ;
           owl:equivalentClass [ owl:intersectionOf 	(
-  [ 	rdf:type owl:Restriction ;
-          		owl:onProperty :writesSongs ; 
-    		owl:someValuesFrom :Song ]
-              [ 	rdf:type owl:Restriction ;
-                  owl:onProperty :writesSongs ;
-                  owl:allValuesFrom :Song]		) ;
-          rdf:type owl:Class ] .
+			  [ 	rdf:type owl:Restriction ;
+					owl:onProperty :writesSongs ; 
+					owl:someValuesFrom :Song ]
+			  [ 	rdf:type owl:Restriction ;
+					owl:onProperty :writesSongs ;
+					owl:allValuesFrom :Song]		) ;
+		  rdf:type owl:Class ] .
 ```
 Как мы уже знаем, в OWL существуют классы, предикаты и экземпляры классов (инстансы). Все они могут объявляться как простым триплетом, так и более сложным высказыванием - OWL аксиомой.
 Стандарт предусматривает два уже определенных класса:
