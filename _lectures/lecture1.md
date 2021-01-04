@@ -14,7 +14,7 @@ tags:
  Видео  | [YouTube](https://www.youtube.com/watch?v=y8OmCRNQoWU) |
  Слайды  | [pdf](/kgcourse2021/assets/slides/Lecture1.pdf) |
  Конспект |  [здесь](https://migalkin.github.io/kgcourse2021/lectures/lecture1)  |
- Домашнее задание | coming soon |
+ Домашнее задание | [link](#домашнее-задание) |
 
 ## Видео
 
