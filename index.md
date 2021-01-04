@@ -9,7 +9,7 @@ header:
     - label: "<i class='fas fa-download'></i> К расписанию"
       url: "#syllabus"
 excerpt: >
-  Курс по графам знаний (Knowledge Graphs) и как их готовить в 2020 году. <br/> На русском языке.
+  Курс по графам знаний (Knowledge Graphs) и как их готовить в 2021 году. <br/> На русском языке.
   <!-- A flexible two-column Jekyll theme. Perfect for building personal sites, blogs, and portfolios.<br />
   <small><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/4.20.1">Latest release v4.20.1</a></small> -->
 feature_row:
@@ -65,8 +65,8 @@ Graph Representation Learning (GRL) - одна из самых быстро ра
 | 3   | SPARQL & Graph Databases | coming soon |
 | 4   | Reification & SHACL & ShEx | coming soon |
 | 5   | Semantic Data Integration | coming soon |
-| 6   | Knowledge Graph Embeddings | coming soon |
-| 7   | Graph Theory Intro | coming soon |
+| 6   | Graph Theory Intro | coming soon |
+| 7   | Knowledge Graph Embeddings | coming soon |
 | 8   | Graph Neural Networks & KGs | coming soon |
 | 9   | Applications: Question Answering & Query Embedding | coming soon |
 
