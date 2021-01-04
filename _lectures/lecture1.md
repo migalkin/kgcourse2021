@@ -2,7 +2,7 @@
 title: 'Лекция 1'
 date: 2021-01-04
 permalink: /lectures/lecture1
-hidden: false
+toc: true
 tags:
   - introduction
 ---
