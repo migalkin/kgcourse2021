@@ -4,7 +4,9 @@ date: 2021-01-04
 permalink: /lectures/lecture2
 toc: true
 tags:
-  - introduction
+  - rdf
+  - rdfs
+  - owl
 ---
 
 # Лекция 2 - RDF, RDFS, OWL
