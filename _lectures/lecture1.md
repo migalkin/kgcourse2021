@@ -161,25 +161,25 @@ tags:
 
 ## Использованные материалы и ссылки:
 
-[[0]] https://www.domo.com/assets/downloads/18_domo_data-never-sleeps-6+verticals.pdf  
-[[1]] https://wiki.dbpedia.org/  
-[[2]] https://en.wikipedia.org/wiki/Main_Page  
-[[3]] https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/  
-[[4]] https://wordnet.princeton.edu/  
-[[5]] http://rtw.ml.cmu.edu/rtw/  
-[[NELL]] http://ceur-ws.org/Vol-2317/article-02.pdf  
-[[NELL 2]] http://nell-ld.telecom-st-etienne.fr/  
-[[6]] https://googleblog.blogspot.com/2012/05/introducing-knowledge-graph-things-not.html  
-[[7]] https://www.wikidata.org/wiki/Wikidata:Main_Page  
-[[8]] https://lod-cloud.net/  
-[[9]] https://www.gartner.com/smarterwithgartner/5-trends-emerge-in-gartner-hype-cycle-for-emerging-technologies-2018/  
-[[10]] https://www.slideshare.net/AlanMorrison/collapsing-the-it-stack-clearing-a-path-for-ai-adoption  
-[[11]] https://www.gtai.de/GTAI/Navigation/EN/Invest/Industries/Industrie-4-0/Industrie-4-0/industrie-4-0-what-is-it.html  
-[[12]] https://www.palantir.com/  
-[[13]] https://developers.facebook.com/docs/graph-api/  
-[[14]] https://semantic-web.com/poolparty-semantic-suite/  
-[[15]] https://capsenta.com/  
-[[16]] http://bio2rdf.org/  
+[[0]] <https://www.domo.com/assets/downloads/18_domo_data-never-sleeps-6+verticals.pdf>  
+[[1]] <https://wiki.dbpedia.org/>  
+[[2]] <https://en.wikipedia.org/wiki/Main_Page>  
+[[3]] <https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/>  
+[[4]] <https://wordnet.princeton.edu/>  
+[[5]] <http://rtw.ml.cmu.edu/rtw/>  
+[[NELL]] <http://ceur-ws.org/Vol-2317/article-02.pdf>  
+[[NELL 2]] <http://nell-ld.telecom-st-etienne.fr/>  
+[[6]] <https://googleblog.blogspot.com/2012/05/introducing-knowledge-graph-things-not.html>  
+[[7]] <https://www.wikidata.org/wiki/Wikidata:Main_Page>  
+[[8]] <https://lod-cloud.net/>  
+[[9]] <https://www.gartner.com/smarterwithgartner/5-trends-emerge-in-gartner-hype-cycle-for-emerging-technologies-2018/>  
+[[10]] <https://www.slideshare.net/AlanMorrison/collapsing-the-it-stack-clearing-a-path-for-ai-adoption>  
+[[11]] <https://www.gtai.de/GTAI/Navigation/EN/Invest/Industries/Industrie-4-0/Industrie-4-0/industrie-4-0-what-is-it.html>  
+[[12]] <https://www.palantir.com/>  
+[[13]] <https://developers.facebook.com/docs/graph-api/>  
+[[14]] <https://semantic-web.com/poolparty-semantic-suite/>  
+[[15]] <https://capsenta.com/>  
+[[16]] <http://bio2rdf.org/>    
 
 
 [0]: https://www.domo.com/assets/downloads/18_domo_data-never-sleeps-6+verticals.pdf 
