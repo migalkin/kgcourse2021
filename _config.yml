@@ -80,7 +80,7 @@ footer:
     #   url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/migalkin/kgcourse2020"
+      url: "https://github.com/migalkin/kgcourse2021"
 
 collections:
   lectures:
