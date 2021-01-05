@@ -1,10 +1,10 @@
 ---
 title: 'Лекция 6'
-date: 2021-01-04
-permalink: /lectures/lecture1
+date: 2021-01-05
+permalink: /lectures/lecture6
 toc: true
 tags:
-  - introduction
+  - graph theory
 ---
 
 # Лекция 6 - Теория графов, познакомьтесь
