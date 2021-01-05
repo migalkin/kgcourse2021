@@ -3,6 +3,8 @@ title: 'Лекция 2'
 date: 2021-01-04
 permalink: /lectures/lecture2
 toc: true
+sidebar:
+  nav: "lectures"
 tags:
   - rdf
   - rdfs

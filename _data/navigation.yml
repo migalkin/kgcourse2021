@@ -3,3 +3,8 @@ main:
     url: /lectures/
   - title: "About"
     url: /about/
+lectures:
+  - title: "L1 - Введение"
+    url: /lectures/lecture1
+  - title: "L2 - RDF, RDFS, OWL"
+    url: /lectures/lecture2
