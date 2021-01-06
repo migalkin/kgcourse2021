@@ -630,7 +630,7 @@ tags:
 
 ## Использованные материалы и ссылки:
 
-[[0]] <Pepe is a character originated in a comic by Matt Furie called Boy's Club/>  
+[[0]] Пепе - персонаж комикса Boy's Club, автор - Matt Furie  
 [[1]] <https://paperswithcode.com/area/graphs>  
 [[2]] <http://web.stanford.edu/class/cs224w/>  
 [[3]] <https://www.studmed.ru/harari-f-teoriya-grafov_f4e3638f73e.html>  
