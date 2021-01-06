@@ -630,7 +630,7 @@ tags:
 
 ## Использованные материалы и ссылки:
 
-[[0]] <https://mattfurie.com/>  
+[[0]] <Pepe is a character originated in a comic by Matt Furie called Boy's Club/>  
 [[1]] <https://paperswithcode.com/area/graphs>  
 [[2]] <http://web.stanford.edu/class/cs224w/>  
 [[3]] <https://www.studmed.ru/harari-f-teoriya-grafov_f4e3638f73e.html>  
@@ -692,7 +692,7 @@ tags:
 
 
 
-[0]: Pepe is a character originated in a comic by Matt Furie called Boy's Club  
+[0]: https://mattfurie.com/   
 [1]: https://paperswithcode.com/area/graphs  
 [2]: http://web.stanford.edu/class/cs224w/  
 [3]: https://www.studmed.ru/harari-f-teoriya-grafov_f4e3638f73e.html  
