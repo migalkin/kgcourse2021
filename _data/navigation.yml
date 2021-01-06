@@ -8,3 +8,5 @@ lectures:
     url: /lectures/lecture1
   - title: "L2 - RDF, RDFS, OWL"
     url: /lectures/lecture2
+  - title: "L6 - Теория графов"
+    url: /lectures/lecture6

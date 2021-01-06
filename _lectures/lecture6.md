@@ -3,6 +3,8 @@ title: 'Лекция 6'
 date: 2021-01-05
 permalink: /lectures/lecture6
 toc: true
+sidebar:
+  nav: "lectures"
 tags:
   - graph theory
 ---
