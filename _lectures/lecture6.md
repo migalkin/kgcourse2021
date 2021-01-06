@@ -639,7 +639,7 @@ tags:
 [[6]] <https://www.nielsen.com/us/en/insights/article/2014/cracking-the-trade-promotion-code/>  
 [[7]] <https://en.wikipedia.org/wiki/Diffusion_of_innovations/>  
 [[8]] <https://cs.stanford.edu/people/jure/pubs/drugcomb-ismb18.pdf/>  
-[[9]] <https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%B8%D1%81%D0%BA_%D0%B2_%D1%88%D0%B8%D1%80%D0%B8%D0%BD%D1%83/>  
+[[9]] Поиск в ширину     
 [[10]] <http://snap.stanford.edu/class/cs224w-readings/broder00bowtie.pdf/>  
 [[11]] <https://www.slideshare.net/bizer/graph-structure-in-the-web-revisited-www2014-web-science-track/>  
 [[12]] <https://www.i-programmer.info/news/82-heritage/10681-google-researchers-win-award-for-classic-paper.html/>  
@@ -648,17 +648,17 @@ tags:
 [[15]] <http://snap.stanford.edu/class/cs224w-readings/Onnela07Tiestrength.pdf/>  
 [[16]] <http://www.weizmann.ac.il/mcb/UriAlon/sites/mcb.UriAlon/files/uploads/NMpaper/networkmotifs.pdf/>  
 [[17]] <http://snap.stanford.edu/higher-order/higher-order-science16.pdf/>  
-[[18]] <https://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C_%D0%AD%D1%80%D0%B4%D1%91%D1%88%D0%B0_%E2%80%94_%D0%A0%D0%B5%D0%BD%D1%8C%D0%B8/>  
-[[19]] <https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD_%D0%9F%D0%B0%D1%80%D0%B5%D1%82%D0%BE/>  
-[[20]] <https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD_%D0%A6%D0%B8%D0%BF%D1%84%D0%B0/>  
+[[18]] Модель Эрдёша — Реньи  
+[[19]] Закон Парето  
+[[20]] Закон Ципфа  
 [[21]] <https://www.quantamagazine.org/a-power-law-keeps-the-brains-perceptions-balanced-20191022/>  
-[[22]] <https://ru.wikipedia.org/wiki/%D0%A6%D0%B5%D0%BD%D1%82%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C/>  
+[[22]] Центральность  
 [[23]] <https://arxiv.org/abs/1506.04704/>  
 [[24]] <https://arxiv.org/abs/0706.3647/>  
 [[25]] <http://social-dynamics.org/homophily/>  
 [[26]] <https://en.wikipedia.org/wiki/Graph_partition/>  
 [[27]] <https://en.wikipedia.org/wiki/Cluster_analysis/>  
-[[28]] <https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%93%D0%B8%D1%80%D0%B2%D0%B0%D0%BD_%E2%80%94_%D0%9D%D1%8C%D1%8E%D0%BC%D0%B5%D0%BD%D0%B0/>  
+[[28]] Алгоритм Гирван-Ньюмена  
 [[29]] <https://en.wikipedia.org/wiki/Louvain_method/>  
 [[30]] <https://www.mckinsey.com/business-functions/organization/our-insights/the-role-of-networks-in-organizational-change/>  
 [[31]] <https://gates.comm.virginia.edu/rlc3w/sna.htm/>  
@@ -671,7 +671,7 @@ tags:
 [[38]] <https://en.wikipedia.org/wiki/Preferential_attachment/>  
 [[39]] <http://ilpubs.stanford.edu:8090/361/>  
 [[40]] <https://www.youtube.com/watch?v=y0BK_s8g37s/>  
-[[41]] <https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D1%80%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81/>  
+[[41]] Марковский процесс  
 [[42]] <http://www.cs.cmu.edu/~htong/pdf/ICDM06_tong.pdf/>  
 [[43]] <https://youtu.be/SQoAMMJ-uKc/>  
 [[44]] <https://arxiv.org/pdf/1301.3781.pdf/>  
