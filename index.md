@@ -4,7 +4,7 @@ permalink: /
 hidden: true
 header:
   overlay_color: "#5e616c"
-  overlay_image: /assets/images/mm-home-page-feature.jpg
+  overlay_image: /assets/images/bg_img.jpg
   actions: 
     - label: "<i class='fas fa-download'></i> К расписанию"
       url: "#syllabus"
