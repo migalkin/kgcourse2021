@@ -611,17 +611,18 @@ tags:
 
 [[0]] <https://mattfurie.com/>  
 [[1]] <https://paperswithcode.com/area/graphs>  
-[[2]] <http://web.stanford.edu/class/cs224w/>
-[[3]] <https://www.studmed.ru/harari-f-teoriya-grafov_f4e3638f73e.html>
-[[4]] <https://arxiv.org/abs/2101.00863>
-[[5]] <http://snap.stanford.edu/class/cs224w-videos-2017/171109-cs224w-720.mp4>
-[[6]] <https://www.nielsen.com/us/en/insights/article/2014/cracking-the-trade-promotion-code/>
+[[2]] <http://web.stanford.edu/class/cs224w/>  
+[[3]] <https://www.studmed.ru/harari-f-teoriya-grafov_f4e3638f73e.html>  
+[[4]] <https://arxiv.org/abs/2101.00863>  
+[[5]] <http://snap.stanford.edu/class/cs224w-videos-2017/171109-cs224w-720.mp4>  
+[[6]] <https://www.nielsen.com/us/en/insights/article/2014/cracking-the-trade-promotion-code/>  
+
 
 
 [0]: Pepe is character originated in a comic by Matt Furie called Boy's Club
 [1]: https://paperswithcode.com/area/graphs
 [2]: http://web.stanford.edu/class/cs224w/
-[3]: https://www.studmed.ru/harari-f-teoriya-grafov_f4e3638f73e.html
-[4]: https://arxiv.org/abs/2101.00863
-[5]: http://snap.stanford.edu/class/cs224w-videos-2017/171109-cs224w-720.mp4
-[6]: https://www.nielsen.com/us/en/insights/article/2014/cracking-the-trade-promotion-code/
+[3]: https://www.studmed.ru/harari-f-teoriya-grafov_f4e3638f73e.html  
+[4]: https://arxiv.org/abs/2101.00863  
+[5]: http://snap.stanford.edu/class/cs224w-videos-2017/171109-cs224w-720.mp4  
+[6]: https://www.nielsen.com/us/en/insights/article/2014/cracking-the-trade-promotion-code/  
