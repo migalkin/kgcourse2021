@@ -87,7 +87,7 @@ Graph Representation Learning (GRL) - одна из самых быстро ра
 
 <!-- {% include gallery id="gallery_team" layout="third" %} -->
 
-![](/assets/images/mg.png){: height="100px" width="100px" style="float:left; padding-right:10px"}**Михаил Галкин** <br/> TU Dresden & Fraunhofer IAIS
+![](/assets/images/mg.png){: height="100px" width="100px" style="float:left; padding-right:10px"}**Михаил Галкин** <br/> MILA Quebec & McGill University
 
 ![](/assets/images/vs.jpeg){: height="100px" width="100px" style="float:left; padding-right:10px"}**Вадим Сафронов** <br/> Key Points
 
