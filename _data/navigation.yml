@@ -8,5 +8,7 @@ lectures:
     url: /lectures/lecture1
   - title: "L2 - RDF, RDFS, OWL"
     url: /lectures/lecture2
+  - title: "L3 - SPARQL, Графовые БД"
+    url: /lectures/lecture3
   - title: "L6 - Теория графов"
     url: /lectures/lecture6
