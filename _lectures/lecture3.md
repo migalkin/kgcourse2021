@@ -775,7 +775,7 @@ public class GremlinTinkerPopExample {
 
 ## Домашнее задание
 
-Попрактикуйтесь составлять SPARQL-запросы к DBpedia endpoint по адресу https://dbpedia.org/sparql 
+Попрактикуйтесь составлять SPARQL-запросы к DBpedia endpoint по адресу [https://dbpedia.org/sparql](https://dbpedia.org/sparql) 
 
 Префиксы, которые вам могут понадобиться: инстансы `dbr:`, классы и предикаты из онтологии `dbo:`
 

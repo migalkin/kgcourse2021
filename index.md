@@ -62,7 +62,7 @@ Graph Representation Learning (GRL) - одна из самых быстро ра
 | ------------- | ------------- | ------------- |
 | 1   | [Introduction](/kgcourse2021/lectures/lecture1)  | [[video](https://www.youtube.com/watch?v=y8OmCRNQoWU)] [[slides](/kgcourse2021/assets/slides/Lecture1.pdf)] |
 | 2   | [RDF & RDFS & OWL](/kgcourse2021/lectures/lecture2)  | [[video](https://www.youtube.com/watch?v=s7zpHzVp8Ik)] [[slides](/kgcourse2021/assets/slides/Lecture2.pdf)]  |
-| 3   | SPARQL & Graph Databases | coming soon |
+| 3   | [SPARQL & Graph Databases](/kgcourse2021/lectures/lecture3) | [[video](https://youtu.be/z7coG_7kzM8)] [[slides](/kgcourse2021/assets/slides/Lecture3.pdf)] |
 | 4   | Reification & SHACL & ShEx | coming soon |
 | 5   | Semantic Data Integration | coming soon |
 | 6   | [Graph Theory Intro](/kgcourse2021/lectures/lecture6) | [[video](https://www.youtube.com/watch?v=2NemwwyK9x4)] [[slides](/kgcourse2021/assets/slides/Lecture6.pdf)] |
