@@ -1,5 +1,5 @@
 ---
-title: 'Лекция 2'
+title: 'Лекция 3'
 date: 2021-02-07
 permalink: /lectures/lecture3
 toc: true
