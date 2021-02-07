@@ -34,7 +34,7 @@ tags:
 
 Второй подход - Labeled Property Graph (LPG) - ориентирован более на классические графы в различных вариациях (направленные, взвешенные, гипеграфы, и тд), где используется множество языков запросов, например, Cypher или GraphQL. LPG несколько отличается от RDF, но в основным тем, что как вершины, так и ребра могут иметь атрибуты “ключ-значение”:
 ```
-				:Alice :knows{since: 2010} :Bob . 
+:Alice :knows{since: 2010} :Bob . 
 ```
  В RDF и OWL, напомним, атрибуты предикатов ограничены, например, owl:TransitiveProperty, и создавать экземпляры ребер с конкретными атрибутами нельзя. С другой стороны, LPG-графы не имеют семантической модели и не способны к логическому выводу. 
 
@@ -128,7 +128,7 @@ SELECT DISTINCT ?s WHERE {
 
 Вывод будет дедуплицированным:
 | ?s |
-| --- | 
+| ---- | 
 | :Alice |
 
 ### ASK 
@@ -558,6 +558,43 @@ ID4 | NULL | NULL | NULL
 
 ### B+ Trees: RDF-3X
 
+RDF-3X [[4]] - RDF-хранилище, которое до сих пор является хорошим примером для изучения индексирования и хранения графов, а также сильным бейзлайном для сравнения с другими графовыми СУБД.
+При загрузке графа, RDF-3X строит сразу несколько индексов. 
+
+**Three-value indexes**
+
+![](/kgcourse2021/assets/images/l3/rdf3x_1.png)
+
+Где, например, `SPO` - это триплет в изначальной форме, а `POS` - запись вида `predicate object subject`.
+Шесть таких индексов позволяют вычислять простейшие graph patterns с одной переменной, например
+
+```sparql
+?x <capital> <Kuala Lumpur>
+```
+или 
+```sparql
+<Malaysia> ?x <Kuala Lumpur>
+```
+
+Для хранения триплетов используются B+ деревья, где в листьях содержатся не абсолютные значения индексированных компонентов, а относительные **delta**:
+
+![](/kgcourse2021/assets/images/l3/rdf3x_2.png)
+
+Т.е. вместо хранения индексов 260, 270, 275 листья будут содержать 0, 10, 5 (как попарные дельты с предыдущим значением).
+
+**Two-value indexes**
+
+Еще одним типом индекса являются **Two-valued indexes** - счетчики всех встречающихся комбинаций `SP, SO, PS, PO, OS, OP`. Например, если `Malaysia` и `Kuala Lumpur` как subject и object (`SO`) встречаются четыре раза, то в этом индексе значение этой пары будет равно четырем:
+
+![](/kgcourse2021/assets/images/l3/rdf3x_3.png)
+
+**One-value indexes**
+
+Наконец, последним типом индексов являются счетчики формата (value, count) количества использований каждого уникального субъекта, предиката и объекта ( `S`, `P`, `O`), соответственно .
+
+Три типа индексов позволяют RDF-3X отвечать практически на все BGP, предусмотренные SPARQL 1.0.
+Отметим, однако, что RDF-3X это **read-only** хранилище, то есть оно не позволяет обновлять уже индексированный граф. Для поддержки записи (и, соответственно, операций `INSERT` и `DELTE`) в современных графовых БД используются Log-structured merge trees (LSM-trees).
+
 ### LSM Trees
 
 ### HDT
@@ -651,10 +688,12 @@ SELECT ?s WHERE {
 [[1]] <https://www.w3.org/TR/rdf-sparql-query/#evaluation>  
 [[2]] <https://www.w3.org/TR/sparql11-query/>  
 [[3]] [David C. Faye, Olivier Curé, Guillaume Blin. A survey of RDF storage approaches, 2012, ARIMA Journal](https://hal.inria.fr/hal-01299496/document)  
+[[4]] Neumann, T., Weikum, G. The RDF-3X engine for scalable management of RDF data. The VLDB Journal 19, 91–113 (2010). https://doi.org/10.1007/s00778-009-0165-y
 
 [0]: https://iccl.inf.tu-dresden.de/w/images/8/85/Wikidata-SPARQL-queries-Bielefeldt-Gonsior-Kroetzsch-LDOW-2018.pdf
 [1]: https://www.w3.org/TR/rdf-sparql-query/#evaluation 
 [2]: https://www.w3.org/TR/sparql11-query/ 
 [3]: https://hal.inria.fr/hal-01299496/document
+[4]: https://domino.mpi-inf.mpg.de/intranet/ag5/ag5publ.nsf/0/AD3DBAFA6FB90DD2C1257593002FF3DF/$file/rdf3x.pdf
 
 
