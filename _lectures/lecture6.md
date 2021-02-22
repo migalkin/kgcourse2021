@@ -1,6 +1,6 @@
 ---
 title: 'Лекция 6'
-date: 2021-02-07
+date: 2021-02-23
 permalink: /lectures/lecture6
 toc: true
 sidebar:

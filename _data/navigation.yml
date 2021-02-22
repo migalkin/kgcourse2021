@@ -10,5 +10,7 @@ lectures:
     url: /lectures/lecture2
   - title: "L3 - SPARQL, Графовые БД"
     url: /lectures/lecture3
+  - title: "L4 - RDF*, Wikidata, Валидация"
+    url: /lectures/lecture4
   - title: "L6 - Теория графов"
     url: /lectures/lecture6
