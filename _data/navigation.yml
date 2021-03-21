@@ -12,5 +12,7 @@ lectures:
     url: /lectures/lecture3
   - title: "L4 - RDF*, Wikidata, Валидация"
     url: /lectures/lecture4
+  - title: "L5 - Data Integration"
+    url: /lectures/lecture5
   - title: "L6 - Теория графов"
     url: /lectures/lecture6
