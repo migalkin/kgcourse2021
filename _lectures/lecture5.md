@@ -576,7 +576,7 @@ WHERE (type=false OR type=true) AND stage = 4
 ## Домашнее задание
 
 Потренируйтесь использовать правила и парсер [RML](https://rml.io/), чтобы преобразовать в RDF несколько датасетов с Kaggle:
-1. [Netflix Shows](https://www.kaggle.com/shivamb/netflix-shows) (исходный формат CSV) - как базовую онтологию используйте [schema.org](schema.org), а для генерации URI колонку `show_id`. Для маппинга TV Shows используйте [schema:TVSeries](https://schema.org/TVSeries) и релевантные предикаты, для Movie - [schema:Movie](https://schema.org/Movie).
+1. [Netflix Shows](https://www.kaggle.com/shivamb/netflix-shows) (исходный формат CSV) - как базовую онтологию используйте [schema.org](https://schema.org), а для генерации URI колонку `show_id`. Для маппинга TV Shows используйте [schema:TVSeries](https://schema.org/TVSeries) и релевантные предикаты, для Movie - [schema:Movie](https://schema.org/Movie).
 2. [Amazon Music Reviews](https://www.kaggle.com/eswarchandt/amazon-music-reviews) (исходный формат JSON) - используйте [schema:Review](https://schema.org/Review) как основной класс и используйте релевантные для него предикаты. Для генерации URI используйте конкатенацию `reviewerID` и `asin`, например `http://example.com/{reviewerID}/{asin}`.
 
 Для создания URIs, которых нет в schema.org, используйте префикс `http://example.com/`
