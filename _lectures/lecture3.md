@@ -170,7 +170,7 @@ CONSTRUCT {
 ```
 Данный запрос вернет новый триплет 
 ```turtle 
-:Alice :livesInCity :Russia
+:Alice :livesInCountry :Russia
 ```
 другими словами, создаст новое ребро в графе между узлами `:Alice` и `:Russia`.
 
