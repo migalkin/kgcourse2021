@@ -331,7 +331,7 @@ ConvE также породил большое число алгоритмов, 
 
 где 
 
-\\[ p(h'_j,r,t'_j | \\{ h'_i, r, t'_i \\} ) = \frac{exp \alpha score(h'_j, r, t'_j)}{\sum_i exp \alpha score(h'_j, r, t'_j)} \\] 
+\\[ p(h'_j,r,t'_j \| \\{ h'_i, r, t'_i \\} ) = \frac{\text{exp} \alpha score(h'_j, r, t'_j)}{\sum_i \text{exp} \alpha score(h'_j, r, t'_j)} \\] 
 
 
  Характеристики sLCWA:
