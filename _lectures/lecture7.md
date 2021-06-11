@@ -318,7 +318,7 @@ ConvE также породил большое число алгоритмов, 
 
 * Из этого условия формулируется классический **Margin Ranking Loss (MRL)**:
   
-\\[ L(\Omega) = \displaystyle\sum_{(h,r,t) \in T } \displaystyle\sum_{(h,r,t') \in T'} max \{ score(h,r,t') - score(h,r,t) + \gamma, 0 \} \\]
+\\[ L(\Omega) = \displaystyle\sum_{(h,r,t) \in T } \displaystyle\sum_{(h,r,t') \in T'} max { score(h,r,t') - score(h,r,t) + \gamma, 0 \ \\]
 
 * Авторы RotatE [[8]] усовершенствовали формулу, доподнительно взвешивая предсказания негативных триплетов через softmax с температурой $\alpha$, и создали **Negative Sampling Self-Adversarial Loss (NSSAL)**:
 
@@ -328,7 +328,7 @@ p(h'_j,r,t'_j | \{ h'_i, r, t'_i \} ) = \frac{exp \alpha score(h'_j, r, t'_j)}{\
  \\]
 
  Характеристики sLCWA:
- + Output shape - $(batch_size * number_negs, 1)$ - низкие затраты GPU памяти
+ + Output shape - $(bs * k, 1)$ (k - количество негативных сэмплов) - низкие затраты GPU памяти
  + Работает на больших графах
  - Медленнее сходится
  - Модели чувствительны к гиперпараметру зазора $\gamma$ , который нужно подбирать для каждой модели для каждого датасета
