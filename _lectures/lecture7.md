@@ -318,7 +318,7 @@ ConvE также породил большое число алгоритмов, 
 
 * Из этого условия формулируется классический **Margin Ranking Loss (MRL)**:
   
-\\[ L(\Omega) = \displaystyle\sum_{(h,r,t) \in T } \displaystyle\sum_{(h,r,t') \in T'} max { score(h,r,t') - score(h,r,t) + \gamma, 0 \ \\]
+\\[ L(\Omega) = \displaystyle\sum_{(h,r,t) \in T } \displaystyle\sum_{(h,r,t') \in T'} max \\{ score(h,r,t') - score(h,r,t) + \gamma, 0 \\} \\]
 
 * Авторы RotatE [[8]] усовершенствовали формулу, доподнительно взвешивая предсказания негативных триплетов через softmax с температурой $\alpha$, и создали **Negative Sampling Self-Adversarial Loss (NSSAL)**:
 
