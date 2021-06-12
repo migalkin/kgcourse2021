@@ -66,7 +66,7 @@ Graph Representation Learning (GRL) - одна из самых быстро ра
 | 4   | [RDF* & Wikidata & SHACL & ShEx](/kgcourse2021/lectures/lecture4) | [[video](https://youtu.be/jOvProRbG0Q)] [[slides](/kgcourse2021/assets/slides/Lecture4.pdf)] |
 | 5   | [Semantic Data Integration](/kgcourse2021/lectures/lecture5)  | [[video](https://youtu.be/zWcyIJqG9OU)] [[slides](/kgcourse2021/assets/slides/Lecture5.pdf)] |
 | 6   | [Graph Theory Intro](/kgcourse2021/lectures/lecture6) | [[video](https://www.youtube.com/watch?v=2NemwwyK9x4)] [[slides](/kgcourse2021/assets/slides/Lecture6.pdf)] |
-| 7   | Knowledge Graph Embeddings | coming soon |
+| 7   | [Knowledge Graph Embeddings](/kgcourse2021/lectures/lecture7) | [[video](https://www.youtube.com/watch?v=YNX4hQsNfks)] | [slides](/kgcourse2021/assets/slides/Lecture7.pdf)]
 | 8   | Graph Neural Networks & KGs | coming soon |
 | 9   | Applications: Question Answering & Query Embedding | coming soon |
 

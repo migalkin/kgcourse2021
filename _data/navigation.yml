@@ -16,3 +16,5 @@ lectures:
     url: /lectures/lecture5
   - title: "L6 - Теория графов"
     url: /lectures/lecture6
+  - title: "L7 - KG Embeddings"
+    url: /lectures/lecture7
