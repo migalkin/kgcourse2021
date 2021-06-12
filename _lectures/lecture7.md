@@ -501,6 +501,10 @@ KG link prediction - скорее задача ранжирования сущн
 
 ## Домашнее задание
 
+1. Выведите формулу ComplEx $\text{Re}\langle h, r, \bar{t} \rangle $ через конкретные действительные и мнимые части сущностей и предикатов как результат умножения трех комплексных чисел. Пусть каждое комплексное число $x$ состоит из $x_{re} + i \cdot x_{im}$.
+2. Выведите формулу Hadamard product между комплексными сущностью и предикатом RotatE $ h \circ r $. Представьте $r$ как через матрицу вращения, где $\text{cos}(r)$ можно положить за $r_{re}$ и  $\text{sin}(r)$ как $r_{im}$. Эта матрица вращает $h$ - вектор-столбец из действительной и мнимой частей.
+3. Colab Notebook (soon)
+
 ## Использованные материалы и ссылки:
 
 [[0]] Nickel, M., Murphy, K., Tresp, V. and Gabrilovich, E., 2015. A review of relational machine learning for knowledge graphs. Proceedings of the IEEE, 104(1), pp.11-33.   
