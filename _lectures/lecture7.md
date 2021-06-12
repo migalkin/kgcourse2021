@@ -497,6 +497,7 @@ KG link prediction - скорее задача ранжирования сущн
 * [GraphVite](https://github.com/DeepGraphLearning/graphvite) (Python / C++)
 * [PyTorch-BigGraph](https://github.com/facebookresearch/PyTorch-BigGraph) (PyTorch)
 * [DGL-KE](https://github.com/awslabs/dgl-ke) (PyTorch / TensorFlow / MXNet)
+* [pykg2vec](https://github.com/Sujit-O/pykg2vec) (PyTorch) 
 
 ## Домашнее задание
 
