@@ -408,7 +408,7 @@ KG link prediction - скорее задача ранжирования сущн
 2. Оценка предскакзаний субъекта $(?,r,t)$
 3. Усреднение значений из шагов 1-2
 
-Стоит заметить, что при добавлении инверсных предикатов (то есть всегда в LCWA режиме и опционально в sLCWA) шаг 2 выполняется как оценка предсказания объекта инвертированного триплета $(t,r^{-1}, ?)$. Собственно, для это и необходимо обучение инверсных предикатов $r^{-1}$.
+Стоит заметить, что при добавлении инверсных предикатов (то есть всегда в LCWA режиме и опционально в sLCWA) шаг 2 выполняется как оценка предсказания объекта инвертированного триплета $(t,r^{-1}, ?)$. Собственно, для этого и необходимо обучение инверсных предикатов $r^{-1}$.
 
 
 ![](/kgcourse2021/assets/images/l7/l7_ranking.png)
@@ -439,10 +439,64 @@ KG link prediction - скорее задача ранжирования сущн
 
 ### Фильтрация
 
+В реальных графах часто встречаются паттерны "один ко многим", "многие к одному", "многие ко многим" (например, из-за наличия hub nodes), и поэтому у оцениваемого триплета $(h,r,t)$ (и, соответственно, запроса $(h,r,?)$) может быть несколько корректных ответов $t_2, \dots, t_n$ помимо собственно $t$. 
+Это важно учитывать при подсчете метрик, так как прочие корректные ответы могут быть отранжированы выше целевого и искусственно понизить качество предсказаний:
+
 ![](/kgcourse2021/assets/images/l7/l7_filtering.png)
 *Фильтрация корректных, но нецелевых сущностей*
 
+В этом примере, оцениваемый триплет `(Science Fiction, exampleMovie, Star Wars)` имеет объект `Star Wars`, тогда как на запрос $(h,r,?)$ корректным ответом также будет `Star Trek`. Модель отранжировала `Star Trek` выше целевого `Star Wars` и ранг `Star Wars`, соответственно, стал равен 2, хотя, технически, модель не ошиблась. 
+
+Чтобы избежать подобных ситуаций, используют **фильтрацию** (filtered setting), когда предсказания прочих корректных сущностей для $(h,r,?)$ устанавливаются в низкое значение (как правило в $-inf$), чтобы при сортировке они оказались в конце списка и не влияли на подсчет метрик. В целом, значения метрик в отфильтрованном режиме должны быть выше, чем в нефильтрованном. 
+
+Подавляющее большинство современных KG embedding алгоритмов оценивается в **фильтрованном** режиме.
+
+### Больше метрик
+
+Однако, даже после фильтрации модели могут назначать большому количеству объектов абсолютно одинаковые вероятности [[16]]. Тогда сортировка по убыванию будет возвращать недетерминированные результаты (одинаковые значения могут быть расставлены в случайном порядке). В зависимости от того, на каком месте при таком ранжировании находится целевая сущность, оценка может быть слишком оптимистичной (optimistic rank, всегда на первом месте среди равных) или пессимистичной (pessimistic rank, всегда на последнем месте среди равных). В таких случаях считают реалистичный сценарий (realistic rank) как мат. ожидание от оптимистичной и пессимистичной оценок.
+
+Так, было обнаружено [[17]], что многие опубликованные модели докладывали только неестественно высокие оптимистичные оценки, которые при реалистичной оценке оказывались на уровне или хуже большинства известных моделей. 
+
+Более того, появляется больше новых метрик [[16]] (Adjusted Mean Rank, Geometric Mean Rank, etc), призванных более выпукло оценивать производительность моделей на разных уровнях в разных настройках.
+
 ## Датасеты и бенчмарки
+
+Исторически, основными бенчмарками для оценки качества KG link prediction стали графы на основе Freebase и WordNet. 
+В старых оригинальных датасетах было обнаружно множество проблем - test set leakages и простые шаблоны, при которых системы на простейших правилах способны полностью решить задачу предсказания связей.
+
+Старые, неиспользуемые датасеты (не используйте их):
+* FB15k
+* WN18
+
+В дальнейшнем, эти датасеты были очищены в FB15k-237 и WN18RR, соответственно, и стали стандартными бенчмарками для оценки эмбеддинг моделей. 
+Несмотря на улучшения, эти датасеты могут не донца отражать реальные графы, т.к. Freebase закрыт с 2014 года и с тех пор недоступен, а WordNet - слишком разреженный граф, похожий на дерево иерархий. 
+Поэтому в последнее время стало появляться больше датасетов, основанных на Wikidata и других KG. 
+
+Таблица с базовой статистикой часто используемых датасетов:
+
+|  | FB15k-237 | WN18RR | CoDEx | YAGO 3-10 | OGB WikiKG 2 | KDD Cup Wikidata | 
+|---------|----------|-----|-----|-----|------|------|
+| \# nodes | 15k | 40k | 2-70k | 123k | 2.5M | 87M |
+| \# edges | 272k | 80k | 33-550k | 1M | 13M | 504M | 
+| \# predicates |  237 | 11 | 42-69 | 34 | 1000 | 1,315 |
+
+Подбор гиперпараметров по-прежнему очень важен, и несколько последних работ [[15]] [[18]] показали, что даже классические модели TransE, RESCAL и DistMult могут демонстировать высокую, сравнимую с современным state of the art, производительность на разных графах.
+
+![](/kgcourse2021/assets/images/l7/l7_eval.png)
+*Hits@10 популярных моделей на FB15k-237 после поиска оптимальных гиперпараметров. Источник: [[15]]*
+
+## Библиотеки и репозитории
+
+В практической части мы будем использовать библиотеку [PyKEEN](https://github.com/pykeen/pykeen/), где содержатся большинство описанных моделей, способов тренировки, оптимизации, и других компонентов.
+
+Популярные библиотеки для работы с KG embedding:
+* [PyKEEN](https://github.com/pykeen/pykeen/) (PyTorch)
+* [LibKGE](https://github.com/uma-pi1/kge) (PyTorch)
+* [OpenKE](https://github.com/thunlp/OpenKE) (PyTorch / TensorFlow)
+* [AmpliGraph](https://github.com/Accenture/AmpliGraph) (TensorFlow)
+* [GraphVite](https://github.com/DeepGraphLearning/graphvite) (Python / C++)
+* [PyTorch-BigGraph](https://github.com/facebookresearch/PyTorch-BigGraph) (PyTorch)
+* [DGL-KE](https://github.com/awslabs/dgl-ke) (PyTorch / TensorFlow / MXNet)
 
 ## Домашнее задание
 
@@ -459,11 +513,14 @@ KG link prediction - скорее задача ранжирования сущн
 [[8]] Sun, Zhiqing, Zhi-Hong Deng, Jian-Yun Nie, and Jian Tang. "RotatE: Knowledge Graph Embedding by Relational Rotation in Complex Space." In International Conference on Learning Representations. 2018.   
 [[9]] Cai, Hongyun, Vincent W. Zheng, and Kevin Chen-Chuan Chang. "A comprehensive survey of graph embedding: Problems, techniques, and applications." IEEE Transactions on Knowledge and Data Engineering 30, no. 9 (2018): 1616-1637.   
 [[10]] Nickel, Maximillian, and Douwe Kiela. "Poincaré Embeddings for Learning Hierarchical Representations." Advances in Neural Information Processing Systems 30 (2017): 6338-6347.   
-[[11]] Chami, Ines, Adva Wolf, Da-Cheng Juan, Frederic Sala, Sujith Ravi, and Christopher Ré. "Low-Dimensional Hyperbolic Knowledge Graph Embeddings." In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pp. 6901-6914. 2020.
+[[11]] Chami, Ines, Adva Wolf, Da-Cheng Juan, Frederic Sala, Sujith Ravi, and Christopher Ré. "Low-Dimensional Hyperbolic Knowledge Graph Embeddings." In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pp. 6901-6914. 2020.   
 [[12]] Dettmers, Tim, Pasquale Minervini, Pontus Stenetorp, and Sebastian Riedel. "Convolutional 2d knowledge graph embeddings." In Proceedings of the AAAI Conference on Artificial Intelligence, vol. 32, no. 1. 2018.  
 [[13]] Wang, Quan, Pingping Huang, Haifeng Wang, Songtai Dai, Wenbin Jiang, Jing Liu, Yajuan Lyu, Yong Zhu, and Hua Wu. "Coke: Contextualized knowledge graph embedding." arXiv preprint arXiv:1911.02168 (2019).   
 [[14]] Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. "Attention is All you Need." In NIPS. 2017.   
 [[15]] Ali, Mehdi, Max Berrendorf, Charles Tapley Hoyt, Laurent Vermue, Mikhail Galkin, Sahand Sharifzadeh, Asja Fischer, Volker Tresp, and Jens Lehmann. "Bringing light into the dark: A large-scale evaluation of knowledge graph embedding models under a unified framework." arXiv preprint arXiv:2006.13365 (2020).   
+[[16]] Berrendorf, Max, Evgeniy Faerman, Laurent Vermue, and Volker Tresp. "Interpretable and fair comparison of link prediction or entity alignment methods with adjusted mean rank." arXiv preprint arXiv:2002.06914 (2020).   
+[[17]] Sun, Zhiqing, Shikhar Vashishth, Soumya Sanyal, Partha Talukdar, and Yiming Yang. "A Re-evaluation of Knowledge Graph Completion Methods." In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pp. 5516-5522. 2020.   
+[[18]] Ruffinelli, Daniel, Samuel Broscheit, and Rainer Gemulla. "You can teach an old dog new tricks! on training knowledge graph embeddings." In International Conference on Learning Representations. 2019.       
 
 
 [0]: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7358050&casa_token=e0MzaF2_ZnkAAAAA:hMhTmlqixbqnhjvIC2VHnb3qhFAapnwY1wXrsXt6L6BilJJwcWBgwaMh3NLu13WF60Hw7e4&tag=1
@@ -482,7 +539,7 @@ KG link prediction - скорее задача ранжирования сущн
 [13]: https://arxiv.org/pdf/1911.02168.pdf
 [14]: https://arxiv.org/pdf/1706.03762.pdf
 [15]: https://www.researchgate.net/profile/Asja-Fischer/publication/342436015_Bringing_Light_Into_the_Dark_A_Large-scale_Evaluation_of_Knowledge_Graph_Embedding_Models_Under_a_Unified_Framework/links/5f00cd9f45851550508b2aaa/Bringing-Light-Into-the-Dark-A-Large-scale-Evaluation-of-Knowledge-Graph-Embedding-Models-Under-a-Unified-Framework.pdf
-
-
-
+[16]: https://arxiv.org/pdf/2002.06914.pdf
+[17]: https://www.aclweb.org/anthology/2020.acl-main.489.pdf
+[18]: https://openreview.net/pdf?id=BkxSmlBFvr
 
