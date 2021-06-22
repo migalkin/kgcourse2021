@@ -22,7 +22,7 @@ tags:
  Видео  | [YouTube](https://youtu.be/YNX4hQsNfks) | 
  Слайды  | [pdf](/kgcourse2021/assets/slides/Lecture7.pdf) |
  Конспект |  [здесь](https://migalkin.github.io/kgcourse2021/lectures/lecture7)  |
- Домашнее задание | [link](#домашнее-задание) |
+ Домашнее задание | [link](#домашнее-задание) , [colab](https://colab.research.google.com/drive/1m8K1gFZqv2tDKU8vKfIoi1qOHbuycC2z) |
 
 ## Видео
 
@@ -503,7 +503,7 @@ KG link prediction - скорее задача ранжирования сущн
 
 1. Выведите формулу ComplEx $\text{Re}\langle h, r, \bar{t} \rangle $ через конкретные действительные и мнимые части сущностей и предикатов как результат умножения трех комплексных чисел. Пусть каждое комплексное число $x$ состоит из $x_{re} + i \cdot x_{im}$.
 2. Выведите формулу Hadamard product между комплексными сущностью и предикатом RotatE $ h \circ r $. Представьте $r$ как через матрицу вращения, где $\text{cos}(r)$ можно положить за $r_{re}$ и  $\text{sin}(r)$ как $r_{im}$. Эта матрица вращает $h$ - вектор-столбец из действительной и мнимой частей.
-3. Colab Notebook (soon)
+3. [Colab Notebook](https://colab.research.google.com/drive/1m8K1gFZqv2tDKU8vKfIoi1qOHbuycC2z) с набором заданий и примеров работы с KG embedding алгоритмами с библиотекой PyKEEN.
 
 ## Использованные материалы и ссылки:
 
