@@ -18,3 +18,5 @@ lectures:
     url: /lectures/lecture6
   - title: "L7 - KG Embeddings"
     url: /lectures/lecture7
+  - title: "L8 - Graph Neural Networks & KGs"
+    url: /lectures/lecture8

@@ -35,7 +35,7 @@ tags:
 ![](/kgcourse2021/assets/images/l8/l8_p1.png)
 
 **Message Passing** (передача сообщений) - один из подходов для построение и анализа GNNs. Большое количество GNN архитектур можно интерпретировать в контексте message passing, поэтому сперва стоит рассмотреть основы этой парадигмы. 
-Содержимое этой лекции основано на нескольких книгах, **Geometric Deep Learning protobook** [[0]], **Graph Representation Learning Book** [[1]], где можно найти более подробные теоретические обоснования, выкладки и объяснения.
+Содержимое этой лекции основано на нескольких книгах, **Geometric Deep Learning protobook** [[0]], **Graph Representation Learning Book** [[1]], где можно найти более подробные теоретические обоснования, выкладки и объяснения. Еще стоит отметить публикации в журнале Distill.pub [[2]].
 
 В этой лекции мы рассмотрим концепцию message passing, как она работает на классических (не multi-relational) графах, основные семейства архитектур, а затем их усовершенствования для работы с KGs, которые отличаются (1) наличием типов связей; (2) частым отсутствием признаков вершин, из-за чего нужно обучать эмбеддинги вершин.
 
@@ -54,10 +54,14 @@ tags:
 * (Опционально) Признаки ребер (edge features)  $E\in \mathbf{R}^{\|E\|\times d}$
 * (Опционально) Типы ребер (relation types) $R\in \mathbf{R}^{\|R\|\times d}$
 
-На выходе процедуры message passing (обозначим ее функцией $f(.)$) получаются обновленные представления всех признаков, поданных на вход:
+На выходе процедуры message passing - обозначим ее функцией $f(.)$ - получаются обновленные представления всех признаков, поданных на вход:
 * $f(X) \rightarrow X'$
 * $f(E) \rightarrow E'$
 * $f(R) \rightarrow R'$
+
+Обновленные представления из графового энкодера затем можно использовать в конкретной задаче, например, классификации вершин или предсказании связей, подключив подходящий декодер.
+
+Message passing - не единственный способ строить графовые энкодеры и векторные представления, например, существуют и успешно применяются unsupervised методы (DeepWalk [[3]], node2vec [[4]], LINE [[5]], VERSE [[6]]). Тем не менее, из-за наличия многочисленных типов связей в KGs, message passing архитектуры получили более широкое применение в контексте работы с графами знаний.
 
 ### Message Passing: Aggregate & Update
 
@@ -83,37 +87,32 @@ tags:
 
 
 
-![](/kgcourse2021/assets/images/l7/l7_p1.png)
-
-
 ## Библиотеки и репозитории
 
-В практической части мы будем использовать библиотеку [PyKEEN](https://github.com/pykeen/pykeen/), где содержатся большинство описанных моделей, способов тренировки, оптимизации, и других компонентов.
-
-Популярные библиотеки для работы с KG embedding:
-* [PyKEEN](https://github.com/pykeen/pykeen/) (PyTorch)
-* [LibKGE](https://github.com/uma-pi1/kge) (PyTorch)
-* [OpenKE](https://github.com/thunlp/OpenKE) (PyTorch / TensorFlow)
-* [AmpliGraph](https://github.com/Accenture/AmpliGraph) (TensorFlow)
-* [GraphVite](https://github.com/DeepGraphLearning/graphvite) (Python / C++)
-* [PyTorch-BigGraph](https://github.com/facebookresearch/PyTorch-BigGraph) (PyTorch)
-* [DGL-KE](https://github.com/awslabs/dgl-ke) (PyTorch / TensorFlow / MXNet)
-* [pykg2vec](https://github.com/Sujit-O/pykg2vec) (PyTorch) 
+Популярные библиотеки для работы с GNNs:
+* [PyG](https://github.com/pyg-team/pytorch_geometric) (PyTorch)
+* [DGL](https://github.com/dmlc/dgl) (PyTorch, MXNet, TensorFlow)
+* [Jraph](https://github.com/deepmind/jraph) (Jax)
 
 ## Домашнее задание
 
-1. Выведите формулу ComplEx $\text{Re}\langle h, r, \bar{t} \rangle $ через конкретные действительные и мнимые части сущностей и предикатов как результат умножения трех комплексных чисел. Пусть каждое комплексное число $x$ состоит из $x_{re} + i \cdot x_{im}$.
-2. Выведите формулу Hadamard product между комплексными сущностью и предикатом RotatE $ h \circ r $. Представьте $r$ как через матрицу вращения, где $\text{cos}(r)$ можно положить за $r_{re}$ и  $\text{sin}(r)$ как $r_{im}$. Эта матрица вращает $h$ - вектор-столбец из действительной и мнимой частей.
-3. [Colab Notebook](https://colab.research.google.com/drive/1m8K1gFZqv2tDKU8vKfIoi1qOHbuycC2z) с набором заданий и примеров работы с KG embedding алгоритмами с библиотекой PyKEEN.
 
 ## Использованные материалы и ссылки:
 
 [[0]] Michael M. Bronstein, Joan Bruna, Taco Cohen, Petar Veličković. Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges. 2021   
 [[1]] William L. Hamilton. Graph Representation Learning. Morgan and Claypool. 2020   
-[[2]]  
+[[2]] Sanchez-Lengeling, et al., "A Gentle Introduction to Graph Neural Networks", Distill, 2021.   
+[[3]] Bryan Perozzi, Rami Al-Rfou, Steven Skiena. DeepWalk: Online Learning of Social Representations. KDD 2014.   
+[[4]] Aditya Grover and Jure Leskovec. node2vec: Scalable Feature Learning for Networks. KDD 2016   
+[[5]] Jian Tang, Meng Qu, Mingzhe Wang, Ming Zhang, Jun Yan, Qiaozhu Mei. LINE: Large-scale Information Network Embedding. WWW 2015   
+[[6]] Anton Tsitsulin, Davide Mottin, Panagiotis Karras, Emmanuel Müller. VERSE: Versatile Graph Embeddings from Similarity Measures. WWW 2018   
+[[7]]
 
 [0]: https://geometricdeeplearning.com/
 [1]: https://www.cs.mcgill.ca/~wlh/grl_book/
-[0]: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7358050&casa_token=e0MzaF2_ZnkAAAAA:hMhTmlqixbqnhjvIC2VHnb3qhFAapnwY1wXrsXt6L6BilJJwcWBgwaMh3NLu13WF60Hw7e4&tag=1
-[1]: https://distill.pub/2021/gnn-intro/
+[2]: https://distill.pub/2021/gnn-intro/
+[3]: https://arxiv.org/abs/1403.6652
+[4]: https://arxiv.org/abs/1607.00653
+[5]: https://arxiv.org/abs/1503.03578
+[6]: https://arxiv.org/abs/1803.04742
 
