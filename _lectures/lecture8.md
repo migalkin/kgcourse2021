@@ -119,19 +119,19 @@ Message passing - не единственный способ строить гр
 
 **Шаг Update** 
 
-Новое представление вершины $u$ получается в результате функции $\text{UPDATE}$ от предыдущего представления этой вершины $\mathbf{h_u}$ и сообщения $\mathbf{m}$, полученного на шаге AGGREGATE:
+Новое представление вершины $u$ получается в результате функции $\text{UPDATE}$ от предыдущего представления этой вершины $\mathbf{h}\_u$ и сообщения $\mathbf{m}$, полученного на шаге AGGREGATE:
 
-\\[ \mathbf{h}_{u}^{(k+1)} = \text{UPDATE}( \mathbf{h}_u^k, \mathbf{m}_{\mathcal{N}(u)}^k ) \\]
+\\[ \mathbf{h}\_{u}^{(k+1)} = \text{UPDATE}( \mathbf{h}\_u^k, \mathbf{m}\_{\mathcal{N}(u)}^k ) \\]
 
 Или с использованием нотации агрегирования:
 
-\\[ \mathbf{h}_{u}^{(k+1)} = \phi( \mathbf{h}_u^k, \bigoplus_{v \in \mathcal{N}(u)} \mathbf{h}_v ) \\]
+\\[ \mathbf{h}\_{u}^{(k+1)} = \phi( \mathbf{h}\_u^k, \bigoplus\_{v \in \mathcal{N}(u)} \mathbf{h}\_v ) \\]
 
 В простейшем виде функция UPDATE может складывать преобразованные представления и пропускать результат через некоторую нелинейную функцию $\sigma$ (sigmoid, tanh, ReLU, и т.д.):
 
-\\[ \mathbf{h}_{u}^{(k+1)} = \sigma( \mathbf{W}_{\text{self}}\mathbf{h}_u^k + \mathbf{W}_{\text{neigh}} \mathbf{m}_{\mathcal{N}(u)}^k  ) \\]
+\\[ \mathbf{h}\_{u}^{(k+1)} = \sigma( \mathbf{W}\_{\text{self}}\mathbf{h}\_u^k + \mathbf{W}\_{\text{neigh}} \mathbf{m}\_{\mathcal{N}(u)}^k  ) \\]
 
-где $\mathbf{W}_{\text{self}}$ - обучаемая весовая матрица предыдущего представления, $\mathbf{W}_{\text{neigh}}$ - весовая матрица агрегации соседей из шага AGGREGATE.
+где $\mathbf{W}\_{\text{self}}$ - обучаемая весовая матрица предыдущего представления, $\mathbf{W}\_{\text{neigh}}$ - весовая матрица агрегации соседей из шага AGGREGATE.
 
 В целом, задача функции UPDATE - скомбинировать имеющиеся векторы в новое представление вершины, поэтому способов такой комбинации может существовать довольно много и иметь разную сложность (например, использовать реккурентные модули (GRU или LSTM) [[9]]).
 
