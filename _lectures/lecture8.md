@@ -119,13 +119,13 @@ Message passing - не единственный способ строить гр
 
 **Шаг Update** 
 
-Новое представление вершины $u$ получается в результате функции $\text{UPDATE}$ от предыдущего представления этой вершины $\mathbf{h}\_u$ и сообщения $\mathbf{m}$, полученного на шаге AGGREGATE:
+Новое представление вершины $u$ на $k$-ом слое получается в результате функции UPDATE от предыдущего представления этой вершины $\mathbf{h}\_u$ и сообщения $\mathbf{m}$, полученного на шаге AGGREGATE:
 
 \\[ \mathbf{h}\_{u}^{(k+1)} = \text{UPDATE}( \mathbf{h}\_u^k, \mathbf{m}\_{\mathcal{N}(u)}^k ) \\]
 
 Или с использованием нотации агрегирования:
 
-\\[ \mathbf{h}\_{u}^{(k+1)} = \phi( \mathbf{h}\_u^k, \bigoplus\_{v \in \mathcal{N}(u)} \mathbf{h}\_v ) \\]
+\\[ \mathbf{h}\_{u}^{(k+1)} = \phi( \mathbf{h}\_u^k, \bigoplus\_{v \in \mathcal{N}(u)} \mathbf{h}\_v^k ) \\]
 
 В простейшем виде функция UPDATE может складывать преобразованные представления и пропускать результат через некоторую нелинейную функцию $\sigma$ (sigmoid, tanh, ReLU, и т.д.):
 
@@ -137,13 +137,40 @@ Message passing - не единственный способ строить гр
 
 ### Глубина Message Passing сетей
 
+Message Passing эквивалентен агрегации соседних представлений, поэтому для получения сообщений от $k$-hop соседей (k-hop neighborhood) нужно как минимум $k$ слоев message passing. 
 
+![](/kgcourse2021/assets/images/l8/l8_p41.png)
+*Глубина получения сообщений с точки зрения вершины $b$*
+
+* На первом слое вершина $b$ получает сообщения от непосредственных соседей $a$, $c$, $d$ (на первом слое представления вершин инициализированы только собственными признаками).
+* На втором слое вершина $b$ получит сообщения от вершин $e$ и $f$, так как их представления были агрегированы в вершины $d$ и $c$ на первом слое (вершины $a$, $c$, $d$ получают сообщения от своих соседей точно так же, как и вершина $b$).
+* На третьем слое вершина $b$ наконец получит сообщение от вершины $g$, чье представление было агрегировано в вершине $f$ на предыдущих слоях.
+
+В общем случае, если мы хотим, чтобы каждая вершина получала сообщения от всех остальных вершин, то количество message passing слоев (**глубина сети**) должно быть не ниже **диаметра** графа.
+
+Первые message passing архитектуры сильно теряли в качестве после 2-4 слоев [[10]] без дополнительных усовершенствований. Очень глубокие сети страдают от феноменов _oversmoothing_ (представления вершин в сообществах размазываются и усредняются) [[11]] и _oversquashing_ (слишком много информации от соседних вершин нужно уместить в один вектор) [[12]]. В настоящее время, сообщество нашло способы уменьшить эти негативные эффекты (например, помощью residual connections) и тренировать сети до 1000 слоев [[13]].
 
 ### Матричная запись
+
+Часто в литературе можно встретить матричную запись простых message passing архитектур, описывающую преобразования на уровне представлений всего графа. Если в нотации Aggregate & Update говорится о сообщениях, приходящих к конкретной вершине $u$, то в матричной записи покрывается весь граф.
+
+Из линейной алгебры можно вспомнить, что произведение $AX$ разреженной матрицы смежности $A$ и матрицы признаков $X$ содержит для каждой вершины сумму представлений ее соседей, что является частным случаем message passing с инвариантным агрегатором суммирования.
+
+Для того, чтобы включить в результирующее произведение представление самой вершины, вводят простую аугментацию - **self-loops**, то есть виртуальные ребра-петли, соединяющие каждую вершину саму с собой. В матричной записи петли (self-loops) описываются как identity matrix $I$ с единицами на главной диагонали. Тогда получается аугментированная матрица смежности:
+
+\\[ \tilde{A} = A + I \\]
+
+Полагая весовую матрицу агрегации соседей $\mathbf{W}\_{\text{neigh}}$ равной весам агрегации предыдущего представления вершины $\mathbf{W}_{\text{self}}$, можно записать message passing на $k$-ом слое на уровне всего графа как уравнение:
+
+\\[ \mathbf{H}^{(k+1)} = \sigma (\mathbf{\tilde{A}}\mathbf{H}^{k}\mathbf{W}^{k}) \\]
+
+Различные GNN архитектуры усовершенствуют это уравнения дополнительной нормализацией (например, через степени вершин). Однако, не все архитектуры, например, такие как GAT, можно просто записать в матричной форме.
+
 
 ## Message Passing Архитектуры
 
 ![](/kgcourse2021/assets/images/l8/l8_p5.png)
+*Источник [[0]]*
 
 ### Graph Convolutional Nets (GCN)
 
@@ -187,7 +214,11 @@ Message passing - не единственный способ строить гр
 [[7]] Keyulu Xu, Weihua Hu, Jure Leskovec, Stefanie Jegelka. How Powerful are Graph Neural Networks?. ICLR 2019   
 [[8]] Gabriele Corso, Luca Cavalleri, Dominique Beaini, Pietro Liò, Petar Veličković. Principal Neighbourhood Aggregation for Graph Nets. NeurIPS 2020   
 [[9]] Yujia Li, Daniel Tarlow, Marc Brockschmidt, Richard Zemel. Gated Graph Sequence Neural Networks. ICLR 2016   
-[[10]]
+[[10]] Thomas N. Kipf, Max Welling. Semi-Supervised Classification with Graph Convolutional Networks. ICLR 2017   
+[[11]] Lingxiao Zhao, Leman Akoglu. PairNorm: Tackling Oversmoothing in GNNs. ICLR 2020    
+[[12]] Uri Alon, Eran Yahav. On the Bottleneck of Graph Neural Networks and its Practical Implications. ICLR 2021   
+[[13]] Guohao Li, Matthias Müller, Bernard Ghanem, Vladlen Koltun. Training Graph Neural Networks with 1000 Layers. ICML 2021   
+[[14]]
 
 [0]: https://geometricdeeplearning.com/
 [1]: https://www.cs.mcgill.ca/~wlh/grl_book/
@@ -199,3 +230,7 @@ Message passing - не единственный способ строить гр
 [7]: https://openreview.net/forum?id=ryGs6iA5Km
 [8]: https://arxiv.org/abs/2004.05718
 [9]: https://arxiv.org/abs/1511.05493
+[10]: https://arxiv.org/pdf/1609.02907.pdf
+[11]: https://arxiv.org/abs/1909.12223
+[12]: https://arxiv.org/abs/2006.05205
+[13]: https://arxiv.org/abs/2106.07476
