@@ -180,6 +180,9 @@ Message Passing эквивалентен агрегации соседних п�
 
 ### Graph Convolutional Nets (GCN)
 
+![](/kgcourse2021/assets/images/l8/l8_gcn.png)
+*Источник [[0]]*
+
 В семействе конволюционных графовых сетей вес ребер при агрегации соседей константен. 
 GCN [[10]] - не первая архитектура сверток на графах, но одна из самых известных, которая используется в огромном числе практических задач от компьютерного зрения и обработки естественного языка до физики и симуляций.
 
@@ -195,7 +198,7 @@ GCN [[10]] - не первая архитектура сверток на гра
 
 Тогда UPDATE функция записывается как:
 
-\\[ \mathbf{h}\_u^{(k)} = \sigma \Big( \mathbf{W}^{(k)} \sum\_{v \in \mathcal{N}(u) \cup \\{u\\}} \frac{\mathbf{h}\_v}{\sqrt{\vert \mathcal{N}(i) \vert \vert \mathcal{N}(j) \vert}} \Big)  \\]
+\\[ \mathbf{h}\_u^{(k)} = \sigma \Big( \mathbf{W}^{(k)} \sum\_{v \in \mathcal{N}(u) \cup \\{u\\}} \frac{\mathbf{h}\_v}{\sqrt{\vert \mathcal{N}(u) \vert \vert \mathcal{N}(v) \vert}} \Big)  \\]
 
 Заметим, что в итерировании по соседям $v \in \mathcal{N}(u) \cup \\{u\\}$ мы добавляем саму вершину $u$, то есть добавляем петли self-loops. 
 
@@ -206,7 +209,43 @@ GCN [[10]] - не первая архитектура сверток на гра
 
 ### Graph Attention Nets (GAT)
 
+![](/kgcourse2021/assets/images/l8/l8_gat.png)
+*Источник [[0]]*
+
+В семействе графовых сетей с механизмом внимания вес ребер - по-прежнему скаляр, но обучаемый.
+
+В парадигме message passing функцию UPDATE можно записать как: 
+
+\\[ \mathbf{h}\_i = \phi \Big( \mathbf{x}\_i, \bigoplus\_{j \in \mathcal{N}(i)} \alpha (\mathbf{x}\_i,\mathbf{x}\_j) \psi (\mathbf{x}\_j) \Big) \\]
+
+где $\alpha(\mathbf{x}\_i,\mathbf{x}\_j)$ - обучаемый вес ребра.
+
+Классическая работа по GAT [[14]] определяет этот весовой коэффициент через механизм внимания (attention) на основе представлений вершин и обучаемого вектора внимания $\mathbf{a}$:
+
+\\[ \alpha\_{ij} = \frac{\text{exp} \Big( \text{LeakyReLU} \Big( \mathbf{a}^T \[ \mathbf{W} h\_i \vert\vert \mathbf{W} h\_j \] \Big) \Big)  }{\sum\_{k \in \mathcal{N}\_i} \text{exp} \Big( \text{LeakyReLU} \Big( \mathbf{a}^T \[ \mathbf{W} h\_i \vert\vert \mathbf{W} h\_k \] \Big) \Big) } \\]
+
+где $\vert\vert$ - конкатенация, $\mathbf{a}^T$ - транспонирование. В этой формуле:
+* преобразованные представления вершин $h\_i, h\_j$ конкатенируются;
+* умножаются на attention vector;
+* преобразуются через LeakyReLU нелинейность;
+* пропускаются через softmax по всем ребрам к соседям вершины $i$.
+
+Простой attention коэффициент приводит к следующей формуле функции UPDATE:
+
+\\[ h\_i = \sigma \Big( \sum\_{j \in \mathcal{N}\_{i}} \alpha\_{ij} \mathbf{W} h\_j \Big) \\]
+
+Как и в любом механизм внимания, можно обучать несколько коэффициентов (attention heads) на каждое ребро, тогда на последнем шаге при получении представлений нужно сконкатанерировать представления от $K$ attention heads:
+
+\\[ h\_i =  \Big\vert\Big\vert\_{k=1}^K  \sigma \Big( \sum\_{j \in \mathcal{N}\_{i}} \alpha\_{ij}^k \mathbf{W}^k h\_j \Big) \\]
+
+В message passing сетях сообщения передаются по ребрам (в общем случае весьма разреженных) графов. Можно заметить, что архитектура трансформеров (Transformer) [[16]] является частным случаем GAT на полносвязном графе, когда каждая вершина соединена со всеми остальными.
+
 ### Message Passing Neural Nets (MPNN)
+
+![](/kgcourse2021/assets/images/l8/l8_mpnn.png)
+*Источник [[0]]*
+
+\\[ \mathbf{h}\_i = \phi \Big( \mathbf{x}\_i, \bigoplus\_{j \in \mathcal{N}(i)} \psi (\mathbf{x}\_i, \mathbf{x}\_j) \Big) \\]
 
 ## Relational GCNs (R-GCN)
 
@@ -241,14 +280,16 @@ GCN [[10]] - не первая архитектура сверток на гра
 [[4]] Aditya Grover and Jure Leskovec. node2vec: Scalable Feature Learning for Networks. KDD 2016   
 [[5]] Jian Tang, Meng Qu, Mingzhe Wang, Ming Zhang, Jun Yan, Qiaozhu Mei. LINE: Large-scale Information Network Embedding. WWW 2015   
 [[6]] Anton Tsitsulin, Davide Mottin, Panagiotis Karras, Emmanuel Müller. VERSE: Versatile Graph Embeddings from Similarity Measures. WWW 2018   
-[[7]] Keyulu Xu, Weihua Hu, Jure Leskovec, Stefanie Jegelka. How Powerful are Graph Neural Networks?. ICLR 2019   
+[[7]] Keyulu Xu, Weihua Hu, Jure Leskovec, Stefanie Jegelka. How Powerful are Graph Neural Networks? ICLR 2019   
 [[8]] Gabriele Corso, Luca Cavalleri, Dominique Beaini, Pietro Liò, Petar Veličković. Principal Neighbourhood Aggregation for Graph Nets. NeurIPS 2020   
 [[9]] Yujia Li, Daniel Tarlow, Marc Brockschmidt, Richard Zemel. Gated Graph Sequence Neural Networks. ICLR 2016   
 [[10]] Thomas N. Kipf, Max Welling. Semi-Supervised Classification with Graph Convolutional Networks. ICLR 2017   
 [[11]] Lingxiao Zhao, Leman Akoglu. PairNorm: Tackling Oversmoothing in GNNs. ICLR 2020    
 [[12]] Uri Alon, Eran Yahav. On the Bottleneck of Graph Neural Networks and its Practical Implications. ICLR 2021   
 [[13]] Guohao Li, Matthias Müller, Bernard Ghanem, Vladlen Koltun. Training Graph Neural Networks with 1000 Layers. ICML 2021   
-[[14]]
+[[14]] Petar Veličković, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Liò, Yoshua Bengio. Graph Attention Networks. ICLR 2018   
+[[15]] Battaglia et al. Relational inductive biases, deep learning, and graph networks. 2018    
+[[16]] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. Attention Is All You Need. NIPS 2017.   
 
 [0]: https://geometricdeeplearning.com/
 [1]: https://www.cs.mcgill.ca/~wlh/grl_book/
@@ -260,7 +301,10 @@ GCN [[10]] - не первая архитектура сверток на гра
 [7]: https://openreview.net/forum?id=ryGs6iA5Km
 [8]: https://arxiv.org/abs/2004.05718
 [9]: https://arxiv.org/abs/1511.05493
-[10]: https://arxiv.org/pdf/1609.02907.pdf
+[10]: https://arxiv.org/abs/1609.02907
 [11]: https://arxiv.org/abs/1909.12223
 [12]: https://arxiv.org/abs/2006.05205
 [13]: https://arxiv.org/abs/2106.07476
+[14]: https://arxiv.org/abs/1710.10903
+[15]: https://arxiv.org/abs/1806.01261
+[16]: https://arxiv.org/abs/1706.03762
