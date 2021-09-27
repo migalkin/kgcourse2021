@@ -191,17 +191,17 @@ GCN [[10]] - не первая архитектура сверток на гра
 где $c\_{ij}$ является скалярным весом ребра, соединяющего вершины $i$ и $j$. 
 Разные GCN модели по-разному определяют этот вес как некоторую нормализационную константу. Классическая работа [[10]] определяет $c\_{ij}$ как обратное от среднего геометрического степеней вершин $i$ и $j$:
 
-\\[ c\_{ij} = \frac{1}{\sqrt{|\mathcal{N}(i)||\mathcal{N}(j)|}} \\]
+\\[ c\_{ij} = \frac{1}{\sqrt{\vert \mathcal{N}(i) \vert \vert \mathcal{N}(j) \vert }} \\]
 
 Тогда UPDATE функция записывается как:
 
-\\[ \mathbf{h}\_u^{(k)} = \sigma \Big( \mathbf{W}^{(k)} \sum\_{v \in \mathcal{N}(u) \cup \\{u\\}} \frac{\mathbf{h}\_v}{\sqrt{|\mathcal{N}(i)||\mathcal{N}(j)|}} \Big)  \\]
+\\[ \mathbf{h}\_u^{(k)} = \sigma \Big( \mathbf{W}^{(k)} \sum\_{v \in \mathcal{N}(u) \cup \\{u\\}} \frac{\mathbf{h}\_v}{\sqrt{\vert \mathcal{N}(i) \vert \vert \mathcal{N}(j) \vert}} \Big)  \\]
 
 Заметим, что в итерировании по соседям $v \in \mathcal{N}(u) \cup \\{u\\}$ мы добавляем саму вершину $u$, то есть добавляем петли self-loops. 
 
 В матричном виде нормализация использует аугментированную диагональную матрицу степеней вершин $\tilde{D}$, полученную из аугментированной матрицы смежности $\tilde{A} = A + I$.
 
-\\[ H = \tilde{D}^{-frac{1}{2}}\tilde{A}\tilde{D}^{-\frac{1}{2}}XW \\]
+\\[ H = \tilde{D}^{-\frac{1}{2}}\tilde{A}\tilde{D}^{-\frac{1}{2}}XW \\]
 
 
 ### Graph Attention Nets (GAT)
