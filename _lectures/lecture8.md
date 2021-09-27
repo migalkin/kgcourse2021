@@ -69,13 +69,13 @@ Message passing - не единственный способ строить гр
 1. Предыдущего представления вершины
 2. Сообщений соседей
 
-\\[ \mathbf{h}_v = \phi (\mathbf{x}_v, \mathbf{X}_{\mathcal{N}_v}) \\]
+\\[ \mathbf{h}_u = \phi ( \mathbf{x}_u, \mathbf{X}_{\mathcal{N}(u)} ) \\]
 
-где $\mathbf{x}_v$ - предыдущее представление вершины $v$, $\mathbf{X}_{\mathcal{N}_v}$ - представления соседей $v$, где $\mathcal{N}_v$ обозначает сообщество вершины $v$. Другими словами, message passing выполняет процесс итеративной агрегации соседей (neighborhood aggregation).
+где $\mathbf{x}_u$ - предыдущее представление вершины $u$, $\mathbf{X}_{\mathcal{N}(u)}$ - представления соседей $u$, где $\mathcal{N}(u)$ обозначает сообщество вершины $u$. Другими словами, message passing выполняет процесс итеративной агрегации соседей (neighborhood aggregation).
 
 Представление соседей получается путем как функция $\psi$ от представлений соседей:
 
-\\[ \mathbf{X}_{\mathcal{N}_v} = \psi (\mathbf{x}_{n1}, \dots , \mathbf{x}_{nk}) \\]
+\\[ \mathbf{X}_{\mathcal{N}(u)} = \psi (\mathbf{x}_{n1}, \dots , \mathbf{x}_{nk}) \\]
 
 ![](/kgcourse2021/assets/images/l8/l8_p31.png)
 
@@ -93,11 +93,11 @@ Message passing - не единственный способ строить гр
 
 На первом шаге для вершины $u$ строится сообщение $\mathbf{m}_{\mathcal{N}(u)}$:
 
-\\[ \mathbf{m}_{\mathcal{N}_u} = \text{AGGREGATE}( \\{ \mathbf{h}_v, \forall v \in \mathcal{N}(u) \\} ) \\]
+\\[ \mathbf{m}_{\mathcal{N}(u)} = \text{AGGREGATE}( \\{ \mathbf{h}_v, \forall v \in \mathcal{N}(u) \\} ) \\]
 
 В графах нет простого понятия "местоположения" вершины, то есть мы не можем сказать, что вершина $u$ находится "справа" или "сверху" от вершины $v$. У каждой вершины есть сообщество соседей, которое мы можем в общем случае перечислять в любом порядке. Поэтому функция агрегации должна быть инвариантна к перестановкам (**permutation invariance**) - то есть результат агрегации не зависит от порядка ее применения к вершинам-соседям.
 
-Мы будем записывать permutation invariant функции как $\bigoplus$:
+Мы будем записывать permutation invariant функции как $\bigoplus$ :
 
 \\[ \mathbf{m}_{\mathcal{N}(u)} = \bigoplus_{v \in \mathcal{N}(u)} \psi ( \mathbf{x}_v ) \\]
 
