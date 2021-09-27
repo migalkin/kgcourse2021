@@ -71,7 +71,7 @@ Message passing - не единственный способ строить гр
    
 Эту функцию можно записать как:
 
-\\[ \mathbf{h}_{u} = \phi (\mathbf{x}_{u}, \mathbf{X}_{\mathcal{N}(u)}) \\]
+\\[ \mathbf{h}\_{u} = \phi (\mathbf{x}\_{u}, \mathbf{X}\_{\mathcal{N}(u)}) \\]
 
 
 где $\mathbf{x}_u$ - предыдущее представление вершины $u$, $\mathbf{X}_{\mathcal{N}(u)}$ - представления соседей $u$, где $\mathcal{N}(u)$ обозначает сообщество вершины $u$. Другими словами, message passing выполняет процесс итеративной агрегации соседей (neighborhood aggregation).
