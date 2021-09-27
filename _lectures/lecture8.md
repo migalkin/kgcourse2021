@@ -65,7 +65,82 @@ Message passing - не единственный способ строить гр
 
 ### Message Passing: Aggregate & Update
 
+Идея message passing проста - вершины графа посылают _сообщения_, и новое представление каждой вершины получается как функция $\phi$ от:
+1. Предыдущего представления вершины
+2. Сообщений соседей
 
+\\[ \mathbf{h}_v = \phi (\mathbf{x}_v, \mathbf{X}_{\mathcal{N}_v}) \\]
+
+где $\mathbf{x}_v$ - предыдущее представление вершины $v$, $\mathbf{X}_{\mathcal{N}_v}$ - представления соседей $v$, где $\mathcal{N}_v$ обозначает сообщество вершины $v$. Другими словами, message passing выполняет процесс итеративной агрегации соседей (neighborhood aggregation).
+
+Представление соседей получается путем как функция $\psi$ от представлений соседей:
+
+\\[ \mathbf{X}_{\mathcal{N}_v} = \psi (\mathbf{x}_{n1}, \dots , \mathbf{x}_{nk}) \\]
+
+![](/kgcourse2021/assets/images/l8/l8_p31.png)
+
+Для графа на рисунке для вершины $b$ представление соседей строится от представлений вершин $a$, $c$, $d$. Часто, для простоты в функцию $\psi$ добавляют и предыдущее представление рассматриваемой вершины $v$:
+
+\\[ \mathbf{X}_{\mathcal{N}_b} = \psi (\mathbf{x}_a,  \mathbf{x}_b, \mathbf{x}_c, \mathbf{x}_d ) \\]
+
+Концептуально, message passing состоит из двух шагов:
+1. Построение сообщения через агрегацию соседей (Aggregate)
+2. Обновление представления вершины (Update)
+
+![](/kgcourse2021/assets/images/l8/l8_p4.png)
+
+**Шаг Aggregate**
+
+На первом шаге для вершины $u$ строится сообщение $\mathbf{m}_{\mathcal{N}(u)}$:
+
+\\[ \mathbf{m}_{\mathcal{N}_u} = \text{AGGREGATE}( \{ \mathbf{h}_v, \forall v \in \mathcal{N}_u \} ) \\]
+
+В графах нет простого понятия "местоположения" вершины, то есть мы не можем сказать, что вершина $u$ находится "справа" или "сверху" от вершины $v$. У каждой вершины есть сообщество соседей, которое мы можем в общем случае перечислять в любом порядке. Поэтому функция агрегации должна быть инвариантна к перестановкам (**permutation invariance**) - то есть результат агрегации не зависит от порядка ее применения к вершинам-соседям.
+
+Мы будем записывать permutation invariant функции как $\bigoplus$:
+
+\\[ \mathbf{m}_{\mathcal{N}(u)} = \bigoplus_{v \in \mathcal{N}(u)} \psi ( \mathbf{x}_v ) \\]
+
+Простые 4 функции, инвариантные к перестановке аргументов:
+* суммирование $\sum$
+* усреднение $avg()$
+* взятие минимального $min()$
+* взятие максимального $max()$
+
+Например, часто используемое агрегирование через сумму представлений соседей и умножение с обучаемой весовой матрицей $\mathbf{W}_{\text{neigh}}$ будет записываться как:
+
+\\[ \mathbf{m}_{\mathcal{N}(u)} = \mathbf{W}_{\text{neigh}}\sum_{v \in \mathcal{N}(u)} \mathbf{x}_v \\]
+
+В зависимости от задачи, выбор инвариантной функции может заметно влиять на результат [[7]] - например, если в задаче определения изомрофизма двух графов с разным количеством вершин у всех вершин одинаковые признаки, то функции $avg(), min() , max()$ вернут одинаковые значения и только $sum()$ вернет уникальные значения. 
+Еще можно использовать все инвариантные функции сразу и составлять сообщение как линейную комбинацию этих функций (метод Principal Neighborhood Aggregation, PNA) [[8]].
+
+**Шаг Update** 
+
+Новое представление вершины $u$ получается в результате функции $\text{UPDATE}$ от предыдущего представления этой вершины $\mathbf{h_u}$ и сообщения $\mathbf{m}$, полученного на шаге AGGREGATE:
+
+\\[ \mathbf{h}_{u}^{(k+1)} = \text{UPDATE}( \mathbf{h}_u^k, \mathbf{m}_{\mathcal{N}(u)}^k ) \\]
+
+Или с использованием нотации агрегирования:
+
+\\[ \mathbf{h}_{u}^{(k+1)} = \phi( \mathbf{h}_u^k, \bigoplus_{v \in \mathcal{N}(u)} \mathbf{h}_v ) \\]
+
+В простейшем виде функция UPDATE может складывать преобразованные представления и пропускать результат через некоторую нелинейную функцию $\sigma$ (sigmoid, tanh, ReLU, и т.д.):
+
+\\[ \mathbf{h}_{u}^{(k+1)} = \sigma( \mathbf{W}_{\text{self}}\mathbf{h}_u^k + \mathbf{W}_{\text{neigh}} \mathbf{m}_{\mathcal{N}(u)}^k  ) \\]
+
+где $\mathbf{W}_{\text{self}}$ - обучаемая весовая матрица предыдущего представления, $\mathbf{W}_{\text{neigh}}$ - весовая матрица агрегации соседей из шага AGGREGATE.
+
+В целом, задача функции UPDATE - скомбинировать имеющиеся векторы в новое представление вершины, поэтому способов такой комбинации может существовать довольно много и иметь разную сложность (например, использовать реккурентные модули (GRU или LSTM) [[9]]).
+
+### Глубина Message Passing сетей
+
+
+
+### Матричная запись
+
+## Message Passing Архитектуры
+
+![](/kgcourse2021/assets/images/l8/l8_p5.png)
 
 ### Graph Convolutional Nets (GCN)
 
@@ -106,7 +181,10 @@ Message passing - не единственный способ строить гр
 [[4]] Aditya Grover and Jure Leskovec. node2vec: Scalable Feature Learning for Networks. KDD 2016   
 [[5]] Jian Tang, Meng Qu, Mingzhe Wang, Ming Zhang, Jun Yan, Qiaozhu Mei. LINE: Large-scale Information Network Embedding. WWW 2015   
 [[6]] Anton Tsitsulin, Davide Mottin, Panagiotis Karras, Emmanuel Müller. VERSE: Versatile Graph Embeddings from Similarity Measures. WWW 2018   
-[[7]]
+[[7]] Keyulu Xu, Weihua Hu, Jure Leskovec, Stefanie Jegelka. How Powerful are Graph Neural Networks?. ICLR 2019   
+[[8]] Gabriele Corso, Luca Cavalleri, Dominique Beaini, Pietro Liò, Petar Veličković. Principal Neighbourhood Aggregation for Graph Nets. NeurIPS 2020   
+[[9]] Yujia Li, Daniel Tarlow, Marc Brockschmidt, Richard Zemel. Gated Graph Sequence Neural Networks. ICLR 2016   
+[[10]]
 
 [0]: https://geometricdeeplearning.com/
 [1]: https://www.cs.mcgill.ca/~wlh/grl_book/
@@ -115,4 +193,6 @@ Message passing - не единственный способ строить гр
 [4]: https://arxiv.org/abs/1607.00653
 [5]: https://arxiv.org/abs/1503.03578
 [6]: https://arxiv.org/abs/1803.04742
-
+[7]: https://openreview.net/forum?id=ryGs6iA5Km
+[8]: https://arxiv.org/abs/2004.05718
+[9]: https://arxiv.org/abs/1511.05493
