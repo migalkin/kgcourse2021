@@ -353,13 +353,11 @@ R-GCN - графовый энкодер, который возвращает о�
 
 \\[ \mathbf{h}\_v = f \Big( \sum\_{(u, r) \in \mathcal{N}(v)} \mathbf{W}\_{\lambda(r)} \phi (\mathbf{x}\_u, \mathbf{z}\_r)  \Big) \\]
 
-где $\mathbf{W}\_{\lambda(r)}$ - весовая матрица направлений ребер, которая принимает только три значения: $\mathbf{W}\_{I}$ (incoming) для входящих ребер, $\mathbf{W}\_{O}$ (outgoing) для исходящих (инверсных), $\mathbf{W}\_{\text{self-loop}}$ для петель self-loops.
+где $\mathbf{W}\_{\lambda(r)}$ - весовая матрица направлений ребер, которая принимает только три значения: 
 
-\\[ \mathbf{W}\_{\lambda(r)} = \begin{cases} 
-  \mathbf{W}\_{O} , r \in \mathcal{R} \\\\  
-  \mathbf{W}\_{I} , r \in \mathcal{R}\_{inv} \\\\
-  \mathbf{W}\_{\text{self-loop}} , r = \text{self-loop} \\\\
-  \end{cases}  \\]
+* $\mathbf{W}\_{O}, r \in \mathcal{R}$ для исходных ребер,
+* $\mathbf{W}\_{I}, r \in \mathcal{R}\_{inv}$ для инверсных ребер, 
+* $\mathbf{W}\_{\text{self-loop}}, r = \text{self-loop}$ для петель self-loops.
 
 Так как в графе присутствуют все три типа ребер, то финальные сообщения получаются как среднее арифметическое от трех message passing вызовов:
 
@@ -414,9 +412,18 @@ CompGCN как графовый энкодер возвращает вектор
 
 ### Out-of-Sample Learning
 
+![](/kgcourse2021/assets/images/l8/l8_oos.png)
+*Источник [[20]]*
+
 ### Textual Features
 
+![](/kgcourse2021/assets/images/l8/l8_blp.png)
+*Источник [[21]]*
+
 ### Structural Features 
+
+![](/kgcourse2021/assets/images/l8/l8_grail.png)
+*Источник [[22]]*
 
 
 
@@ -451,7 +458,10 @@ CompGCN как графовый энкодер возвращает вектор
 [[16]] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. Attention Is All You Need. NIPS 2017.   
 [[17]] Michael Schlichtkrull, Thomas N. Kipf, Peter Bloem, Rianne van den Berg, Ivan Titov, Max Welling. Modeling Relational Data with Graph Convolutional Networks. ESWC 2018.    
 [[18]] Thiviyan Thanapalasingam, Lucas van Berkel, Peter Bloem, Paul Groth. Relational Graph Convolutional Networks: A Closer Look. arxiv 2021.    
-[[19]] Shikhar Vashishth, Soumya Sanyal, Vikram Nitin, Partha Talukdar. Composition-based Multi-Relational Graph Convolutional Networks. ICLR 2020.   
+[[19]] Shikhar Vashishth, Soumya Sanyal, Vikram Nitin, Partha Talukdar. Composition-based Multi-Relational Graph Convolutional Networks. ICLR 2020.    
+[[20]] Marjan Albooyeh, Rishab Goel, Seyed Mehran Kazemi. Out-of-Sample Representation Learning for Multi-Relational Graphs. EMNLP 2020.    
+[[21]] Daniel Daza, Michael Cochez, Paul Groth. Inductive Entity Representations from Text via Link Prediction. WWW 2021.    
+[[22]] Komal K. Teru, Etienne Denis, William L. Hamilton. Inductive Relation Prediction by Subgraph Reasoning. ICML 2020.    
 
 
 
@@ -475,3 +485,6 @@ CompGCN как графовый энкодер возвращает вектор
 [17]: https://arxiv.org/abs/1703.06103
 [18]: https://arxiv.org/abs/2107.10015
 [19]: https://arxiv.org/abs/1911.03082
+[20]: https://arxiv.org/abs/2004.13230
+[21]: https://arxiv.org/abs/2010.03496
+[22]: https://arxiv.org/abs/1911.06962
