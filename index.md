@@ -56,19 +56,19 @@ Graph Representation Learning (GRL) - одна из самых быстро ра
 1) Символьное представление: онтологии, логика, запросы, СУБД;  
 2) Векторное представление: эмбеддинги, graph mining, графовые нейросети, приложения в NLP и Graph ML.
 
-# Syllabus
+# Содержание
 
 |       #        | Title |  Materials  |
 | ------------- | ------------- | ------------- |
-| 1   | [Introduction](/kgcourse2021/lectures/lecture1)  | [[video](https://www.youtube.com/watch?v=y8OmCRNQoWU)] [[slides](/kgcourse2021/assets/slides/Lecture1.pdf)] |
+| 1   | [Введение](/kgcourse2021/lectures/lecture1)  | [[video](https://www.youtube.com/watch?v=y8OmCRNQoWU)] [[slides](/kgcourse2021/assets/slides/Lecture1.pdf)] |
 | 2   | [RDF & RDFS & OWL](/kgcourse2021/lectures/lecture2)  | [[video](https://www.youtube.com/watch?v=s7zpHzVp8Ik)] [[slides](/kgcourse2021/assets/slides/Lecture2.pdf)]  |
-| 3   | [SPARQL & Graph Databases](/kgcourse2021/lectures/lecture3) | [[video](https://youtu.be/z7coG_7kzM8)] [[slides](/kgcourse2021/assets/slides/Lecture3.pdf)] |
+| 3   | [SPARQL & Графовые БД](/kgcourse2021/lectures/lecture3) | [[video](https://youtu.be/z7coG_7kzM8)] [[slides](/kgcourse2021/assets/slides/Lecture3.pdf)] |
 | 4   | [RDF* & Wikidata & SHACL & ShEx](/kgcourse2021/lectures/lecture4) | [[video](https://youtu.be/jOvProRbG0Q)] [[slides](/kgcourse2021/assets/slides/Lecture4.pdf)] |
-| 5   | [Semantic Data Integration](/kgcourse2021/lectures/lecture5)  | [[video](https://youtu.be/zWcyIJqG9OU)] [[slides](/kgcourse2021/assets/slides/Lecture5.pdf)] |
-| 6   | [Graph Theory Intro](/kgcourse2021/lectures/lecture6) | [[video](https://www.youtube.com/watch?v=2NemwwyK9x4)] [[slides](/kgcourse2021/assets/slides/Lecture6.pdf)] |
+| 5   | [Семантическая Интеграция Данных](/kgcourse2021/lectures/lecture5)  | [[video](https://youtu.be/zWcyIJqG9OU)] [[slides](/kgcourse2021/assets/slides/Lecture5.pdf)] |
+| 6   | [Введение в Теорию Графов](/kgcourse2021/lectures/lecture6) | [[video](https://www.youtube.com/watch?v=2NemwwyK9x4)] [[slides](/kgcourse2021/assets/slides/Lecture6.pdf)] |
 | 7   | [Knowledge Graph Embeddings](/kgcourse2021/lectures/lecture7) | [[video](https://www.youtube.com/watch?v=YNX4hQsNfks)] [[slides](/kgcourse2021/assets/slides/Lecture7.pdf)] |
-| 8   | Graph Neural Networks & KGs | coming soon |
-| 9   | Applications: Question Answering & Query Embedding | coming soon |
+| 8   | [Графовые нейросети  (GNNs) & KGs]((/kgcourse2021/lectures/lecture8)) | [[video](https://www.youtube.com/watch?v=_aX-YSIIn0k)] [[slides](/kgcourse2021/assets/slides/Lecture8.pdf)] |
+| 9   | Приложения: Question Answering & Query Embedding | coming soon |
 
 # Платформа
 Курс проходит на платформе сообщества Open Data Science как отдельный [трэк](https://ods.ai/tracks/kgcourse2021), где доступны дополнительные материалы и leaderboards для домашних заданий.
