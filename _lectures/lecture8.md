@@ -501,13 +501,13 @@ GraIL основан на идее агрегирования подграфов
 ## Библиотеки и репозитории
 
 Популярные библиотеки для работы с GNNs:
-* [PyG](https://github.com/pyg-team/pytorch_geometric) (PyTorch)
+* [PyG](https://github.com/pyg-team/pytorch_geometric) - PyTorch Geometric (PyTorch)
 * [DGL](https://github.com/dmlc/dgl) (PyTorch, MXNet, TensorFlow)
 * [Jraph](https://github.com/deepmind/jraph) (Jax)
 
 ## Домашнее задание
 
-Познакомтесь с основным инструментарием Graph ML в 4 colab notebooks:
+Познакомьтесь с основным инструментарием Graph ML в 4 colab notebooks:
 1. [NetworkX + PyTorch Geometric](https://colab.research.google.com/drive/1dcy9oyVIfJXZ8Rku6sWdJxRDuyFQILiY?usp=sharing)
 2. [Базовые статистики и эмбеддинги](https://colab.research.google.com/drive/1uKVBjOKy0Zd1KhTErmEL_i_dRxAlDxtv?usp=sharing)
 3. [Тензоры PyTorch Geometric, Open Graph Benchmark, GCN](https://colab.research.google.com/drive/1Q0swSdVybTubV09jaM5XasrBRPuHHAmb?usp=sharing)
