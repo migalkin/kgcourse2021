@@ -744,7 +744,7 @@ public class GremlinTinkerPopExample {
 
 ```
 
-**GraphQL**, разработанный Facebook, позиционируется скорее как замена REST API для сервисов, основанных на графовых БД, нежели как чистый язык запросов. Однако, его выразительность позволяет транслировать запросы в Cypher и SPARQL. Neo4j поддерживает трансляцию запросов GraphQL в Cypher и результатов по обратной схеме, тогда как Stardog транслирует [[10]] запросы в SPARQL, а результаты из SPARQL в GraphQL. 
+**GraphQL**, разработанный Facebook, позиционируется скорее как замена REST API для сервисов, основанных на графовых БД, нежели как чистый язык запросов. Однако, его выразительность позволяет транслировать запросы в Cypher и SPARQL. Neo4j поддерживает трансляцию запросов GraphQL в Cypher и результатов по обратной схеме, тогда как Stardog [[10]] / GraphDB [[11]] транслируют  запросы в SPARQL, а результаты из SPARQL в GraphQL. 
 Пусть задан простой граф:
 ![](https://docs.stardog.com/assets/images/starwars.png))
 
@@ -815,7 +815,8 @@ public class GremlinTinkerPopExample {
 [[7]] <https://www.rdfhdt.org/datasets/>  
 [[8]] <https://neo4j.com/blog/rdf-triple-store-vs-labeled-property-graph-difference/>  
 [[9]] <http://tinkerpop.apache.org/gremlin.html>  
-[[10]] <https://docs.stardog.com/query-stardog/graphql#graphql>  
+[[10]] <https://docs.stardog.com/query-stardog/graphql#graphql>   
+[[11]] <https://platform.ontotext.com/soml/queries.html>    
 
 [0]: https://iccl.inf.tu-dresden.de/w/images/8/85/Wikidata-SPARQL-queries-Bielefeldt-Gonsior-Kroetzsch-LDOW-2018.pdf
 [1]: https://www.w3.org/TR/rdf-sparql-query/#evaluation 
@@ -828,3 +829,4 @@ public class GremlinTinkerPopExample {
 [8]: https://neo4j.com/blog/rdf-triple-store-vs-labeled-property-graph-difference/
 [9]: http://tinkerpop.apache.org/gremlin.html
 [10]: https://docs.stardog.com/query-stardog/graphql#graphql
+[11]: https://platform.ontotext.com/soml/queries.html
