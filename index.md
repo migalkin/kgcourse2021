@@ -71,7 +71,7 @@ Graph Representation Learning (GRL) - одна из самых быстро ра
 | 9   | Приложения: Question Answering & Query Embedding | coming soon |
 | 10   | Бонус 1: SAP HANA Graph | [[video](https://youtu.be/QDkMafdirCc)] [[slides](/kgcourse2021/assets/slides/Extra1_SAP.pdf)] |
 | 11   | [Бонус 2: Community Detection на Квантовых Компьютерах](https://semyonsinchenko.github.io/qmlcourse/book/index.html) | [[video](https://youtu.be/qn3GZ7PFass)] [[slides](/kgcourse2021/assets/slides/Extra2_QML.pdf)] |
-| 12  | Бонус 3: Process Mining | [[video](https://youtu.be/pcBx32R5UMY)] [[slides](/kgcourse2021/assets/slides/Extra3_PM.pdf)] |
+| 12  | [Бонус 3: Process Mining](https://github.com/SberProcessMining/Sber_Process_Mining) | [[video](https://youtu.be/pcBx32R5UMY)] [[slides](/kgcourse2021/assets/slides/Extra3_PM.pdf)] |
 
 # Платформа
 Курс проходит на платформе сообщества Open Data Science как отдельный [трэк](https://ods.ai/tracks/kgcourse2021), где доступны дополнительные материалы и leaderboards для домашних заданий.
